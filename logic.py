@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import nltk
 from nltk import CFG
 from nltk.tree import Tree
+import threading
 
 
 class TreeWindow(QtWidgets.QWidget):
@@ -141,14 +142,17 @@ class Ui_Interface(object):
             resultado += "\n".join(pasos_derivacion)
             self.textDerivacion.setPlainText(resultado)
 
-            if self.AbsCheck.isChecked():
-                ast = self.generar_ast(arbol)
-                if ast is not None:
-                    ast.draw()
-                else:
-                    QtWidgets.QMessageBox.critical(None, "Error", "No se pudo generar el Árbol Abstracto de Sintaxis.")
+            # Generar ambos árboles simultáneamente en hilos separados
+            if self.AbsCheck.isChecked() and self.ArbolCheck.isChecked():
+                # Crear dos hilos para dibujar ambos árboles al mismo tiempo
+                thread_ast = threading.Thread(target=self.dibujar_abstract_tree, args=(arbol,))
+                thread_tree = threading.Thread(target=self.dibujar_sintactic_tree, args=(arbol,))
+                thread_ast.start()
+                thread_tree.start()
+            elif self.AbsCheck.isChecked():
+                self.dibujar_abstract_tree(arbol)  # Solo el Árbol Abstracto
             elif self.ArbolCheck.isChecked():
-                arbol.draw()
+                self.dibujar_sintactic_tree(arbol)  # Solo el Árbol Sintáctico
             else:
                 self.textArbol.clear()
 
@@ -157,9 +161,27 @@ class Ui_Interface(object):
         except Exception as e:
             QtWidgets.QMessageBox.critical(None, "Error", f"Error durante la derivación: {e}")
 
+    def dibujar_abstract_tree(self, arbol):
+        try:
+            ast = self.generar_ast(arbol)
+            if ast is not None:
+                ast.draw()  # Dibuja el Árbol Abstracto
+            else:
+                QtWidgets.QMessageBox.critical(None, "Error", "No se pudo generar el Árbol Abstracto de Sintaxis.")
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(None, "Error", f"Error al dibujar el Árbol Abstracto: {e}")
+
+    def dibujar_sintactic_tree(self, arbol):
+        try:
+            arbol.draw()  # Dibuja el Árbol Sintáctico
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(None, "Error", f"Error al dibujar el Árbol Sintáctico: {e}")
+
+
     def show_tree(self, tree):
         if self.tree_window is None:
             self.tree_window = TreeWindow(str(tree))
             self.tree_window.show()
         else:
             self.tree_window.tree_display.setPlainText(str(tree))
+
