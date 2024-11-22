@@ -42,12 +42,43 @@ pip install nltk
 
 
 # Modo de uso
-Ejecuta el archivo principal del programa (main_interface.pyw) desde Visual Studio Code.
+Ejecuta el archivo principal del programa (main.pyw) desde Visual Studio Code.
 
 Esto abrirá la interfaz gráfica.
 
 Ingresa la gramática y la expresión deseada en los campos proporcionados.
 
-La gramática debe estar escrita en formato......
+La gramática debe estar escrita en una sola linea y con comas separando las reglas para cada letra, los finales deben estar entre ''
 
-Ejemplo de gramática:
+Ejemplo de gramática: 
+S -> E, E -> E '+' T | E '-' T | T, T -> T '*' F | T '/' F | F, F -> 'a' | 'b' | 'x' | 'y' | '(' E ')' | NUM, NUM -> '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '0'
+
+Para la ingresar la expresion a derivar debe separar cada caracter con espacios.
+ejemplo:
+5 + 3 * 8
+
+Seleccionar si se quiere derivar por izquierda o por derecha, solo se puede seleccionar una de estas opciones a la vez, no seleccionar ninguna tambien resultara en un error.
+
+Seleccionar alguno de los arboles no es obligatorio, solo se puede seleccionar un arbol a la vez.
+
+Pulsar el boton de "generar derivacion" y la derivacion aparecera en el campo de texto adyacente, si se selecciono un arbol este abrira una widget aparte.
+
+# Entender la derivación:
+Al derivar una expresion el resultado sera algo asi:
+
+   S
+   E
+   E + T
+   T + T
+   F + T
+   NUM + T
+   5 + T
+   5 + T * F
+   5 + F * F
+   5 + NUM * F
+   5 + 3 * F
+   5 + 3 * NUM
+   5 + 3 * 8
+   
+Dependiendo si se eligio derivar por derecha o izquierda, cada linea nueva es el cambio que se realizo, cada linea es el paso a paso y se puede verificar con las reglas de gramatica intrioducidas previamente.
+
