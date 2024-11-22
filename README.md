@@ -48,6 +48,6 @@ Esto abrirá la interfaz gráfica.
 
 Ingresa la gramática y la expresión deseada en los campos proporcionados.
 
-La gramática debe estar escrita en formato estándar CFG.
+La gramática debe estar escrita en formato......
 
 Ejemplo de gramática:
