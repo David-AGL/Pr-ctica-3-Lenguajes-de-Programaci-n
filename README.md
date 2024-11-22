@@ -14,11 +14,11 @@ Este programa, desarrollado en Python, implementa una interfaz gráfica que perm
 
 -Derivación por la derecha: Similar a la derivación por la izquierda, pero comenzando y derivando siempre desde el lado derecho de la expresión.
 
--Generación de árboles de derivación: Muestra el árbol completo con todas las derivaciones posibles que llevan a la expresión deseada.
+-Generación de árboles de análisis sintáctico: Muestra el árbol completo con todas las derivaciones necesarias para llegar a la expresión deseada.
 
--Generación del árbol sintáctico abstracto (AST): Proporciona una representación más simplificada del proceso de derivación.
+-Generación del árbol sintáctico abstracto (AST): Proporciona una representación más simplificada del árbol de análisis sintáctico.
 
-# Requisitos
+# Materiales Utilizados
 Entorno de desarrollo: Visual Studio Code.
 
 Versión de Python: 3.11.
