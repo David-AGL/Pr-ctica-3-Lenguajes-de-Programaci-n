@@ -59,7 +59,7 @@ ejemplo:
 
 Seleccionar si se quiere derivar por izquierda o por derecha, solo se puede seleccionar una de estas opciones a la vez, no seleccionar ninguna tambien resultara en un error.
 
-Seleccionar alguno de los arboles no es obligatorio, solo se puede seleccionar un arbol a la vez.
+Seleccionar alguno de los arboles no es obligatorio, ambos se pueden seleccionar al mismo tiempo.
 
 Pulsar el boton de "generar derivacion" y la derivacion aparecera en el campo de texto adyacente, si se selecciono un arbol este abrira una widget aparte.
 
