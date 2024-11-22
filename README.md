@@ -35,6 +35,7 @@ NLTK (para la manipulación de gramáticas libres de contexto).
 2. Instala PyQt5 y NLTK usando pip:
 
 pip install pyqt5 
+
 pip install nltk
 
 3. Descarga el proyecto y ábrelo en Visual Studio Code.   
