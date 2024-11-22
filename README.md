@@ -67,18 +67,31 @@ Pulsar el boton de "generar derivacion" y la derivacion aparecera en el campo de
 Al derivar una expresion el resultado sera algo asi:
 
    S
+   
    E
+   
    E + T
+   
    T + T
+   
    F + T
+   
    NUM + T
+   
    5 + T
+   
    5 + T * F
+   }
    5 + F * F
+   
    5 + NUM * F
+   
    5 + 3 * F
+   
    5 + 3 * NUM
+   
    5 + 3 * 8
+   
    
 Dependiendo si se eligio derivar por derecha o izquierda, cada linea nueva es el cambio que se realizo, cada linea es el paso a paso y se puede verificar con las reglas de gramatica intrioducidas previamente.
 
